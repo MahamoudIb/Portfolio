@@ -18,19 +18,36 @@
         <h1>Fødselsdato: 9 januar 2000</h1>
         <h1>Utdanning: Dataingeniør</h1>
       </section>
-      <section class="prosjects">
+      <section class="projects">
         <h1 class="projectTitle">Prosjekter</h1>
-        <ul class="allProjects">
-          <li class="projectItem">Tensa Zangetsu</li>
-          <li class="projectItem">Sōō Zabimaru</li>
-          <li class="projectItem">Daiguren Hyōrinmaru</li>
-          <li class="projectItem">Senbonzakura Kageyoshi</li>
-          <li class="projectItem">Kokujō Tengen Myō'ō: Dangai Jōe</li>
-          <li class="projectItem">Zanka no Tachi</li>
-          <li class="projectItem">Senbonzakura Kageyoshi</li>
-          <li class="projectItem">Kokujō Tengen Myō'ō: Dangai Jōe</li>
-          <li class="projectItem">Zanka no Tachi</li>
-        </ul>
+        <form class="projectForm">
+          <header class="makeProjectTitle">
+            <h1>Legg til et nytt prosjekt</h1>
+          </header>
+          <label for="title">Tittel:</label>
+          <input type="text" id="title" name="title">
+  
+          <label for="git_link">GIT-URL link:</label>
+          <input type="text" id="git_link" name="git_link">
+  
+          <label for="description">Beskrivelse:</label>
+          <textarea id="description" name="description"></textarea>
+  
+          <label for="contributors">Bidragsytere:</label>
+          <input type="text" id="contributors" name="contributors">
+          <button class="addButton" type="button">Legg til</button>
+  
+          <label for="languages">Programmeringsspråk:</label>
+          <input type="text" id="languages" name="languages">
+          <button class="addButton" type="button">Legg til</button>
+          
+          <div class="createCancelButtons">
+            <button class="cancelButton" type="reset">Avbryt</button>
+            <button class="createButton" type="submit">Opprett prosjekt</button>
+          </div>
+          
+      </form>
+        <ul class="allProjects"></ul>
       </section>
     </div>
     <script type="module" src="/main.js"></script>
