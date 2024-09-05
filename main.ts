@@ -4,7 +4,7 @@ let projects = [];
 let contributors = [];
 let languages = [];
 
-fetch('/projects.json')
+fetch('http://localhost:3999/data')
     .then(response => {
         if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -80,12 +80,25 @@ createButton.addEventListener('click', (event) => {
   const data = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
-    git_link: document.getElementById('git_link').value,
+    git_Link: document.getElementById('git_link').value,
     contributors,
     languages
   };
 
   projects.push(data)
+  try {
+    const response2 = fetch('http://localhost:3999/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(projects)
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  location.reload();
 });
 
 const cancleButton = document.querySelector('.cancelButton')
