@@ -29,16 +29,8 @@ nav {
 }
 
 .welcome {
-}
-
-.makeButton {
-position: relative;
-right: 20px;
-width: 120px;
-height: 30px;
-margin-top: 15px;
-display: flex;
-justify-content: center;
+  position: relative;
+  left: 48%;
 }
 
 .portfolio {

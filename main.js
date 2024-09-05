@@ -1,9 +1,10 @@
-import './style.css'
+import './style.css';
 
 let projects = [];
+let contributors = [];
+let languages = [];
 
-const fetchProjects = async () => {
-    fetch('/projects.json')
+fetch('/projects.json')
     .then(response => {
         if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -14,18 +15,18 @@ const fetchProjects = async () => {
     .then(data => {
         projects = data;
         viewProjects();
+        console.log(data);
     })
     .catch(error => {
         console.error('There has been a problem with your fetch operation:', error);   
     });
-};
 
 const viewProjects = () => {
     let allProjects = document.querySelector('.allProjects')
     for (let index = 0; index < projects.length; index++) {
         let project = document.createElement('div');
         project.className = 'projectItem';
-        project.addEventListener('click', () => {
+        project.addEventListener('click', (e) => {
             window.location.href = projects[index].git_Link;
         });
 
@@ -50,6 +51,45 @@ const viewProjects = () => {
     }
 }
 
+const contributorInput = document.getElementById('contributors');
+const languageInput = document.getElementById('languages');
+const addContributorBtn = document.querySelector('#addButtonContributor');
+const addLanguageBtn = document.querySelector('#addButtonLanguages');
 
 
-fetchProjects();
+function addToArray(input, array) {
+  const value = input.value.trim();
+  if (value) {
+    array.push(value);
+    input.value = '';
+  }
+}
+
+addContributorBtn.addEventListener('click', () => {
+  addToArray(contributorInput, contributors);
+});
+
+addLanguageBtn.addEventListener('click', () => {
+  addToArray(languageInput, languages);
+});
+
+const createButton = document.querySelector('.createButton');
+createButton.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  const data = {
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    git_link: document.getElementById('git_link').value,
+    contributors,
+    languages
+  };
+
+  projects.push(data)
+});
+
+const cancleButton = document.querySelector('.cancelButton')
+cancleButton.addEventListener('click', (e) => {
+    languages = [];
+    contributors = [];
+});
