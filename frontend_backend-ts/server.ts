@@ -11,7 +11,7 @@ app.use("/*", cors());
 app.use("/static/*", serveStatic({ root: "./" }));
 
 app.get("/data", async (c) => {
-    const data = await fs.readFile("./projects.json", "utf-8");
+    const data = await fs.readFile("projects.json", "utf-8");
     const dataAsJson = JSON.parse(data);
     return c.json(dataAsJson);
 });
@@ -19,6 +19,7 @@ app.get("/data", async (c) => {
 app.post("/update", async (c) => {
     const data = await c.req.json();
     const formattedData = JSON.stringify(data, null, 2);
+    console.log("hallo");
     await fs.writeFile('projects.json', formattedData);
     return c.json(formattedData, { status: 201 });
   });
