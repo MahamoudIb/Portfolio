@@ -1,0 +1,161 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+nav {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background-color: #242424;
+}
+
+.welcome {
+  position: relative;
+  left: 48%;
+}
+
+.portfolio {
+  display: flex;
+  position: fixed ;
+  margin-top: 88px;
+  height: 100%;
+  width: 100%;
+  left: 0;
+}
+
+.profile {
+  width: 400px;
+  height: 100%;
+  padding-top: 10px;
+  top: 0;
+  background-color: rgb(50, 48, 48);
+}
+
+.profilePicture{
+  position: relative;
+  left: 20px;
+  max-width: 60%;
+  height: auto;
+  clip-path: circle(50% at center);
+  border-color: aliceblue;
+}
+
+.projects{
+  left: 0;
+  margin-bottom: 500px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll
+}
+
+.projectTitle {
+  display:flex;
+  justify-content: center;
+  color: #242424;
+}
+
+.allProjects {
+  display: grid;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 120px;
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 300px 300px 300px;
+  justify-content: center;
+  gap: 50px;
+}
+
+.projectItem {
+  border: 1px solid #333;
+  background-color: rgb(56, 55, 55);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.allProjects :hover{
+  background-color: rgb(75, 74, 74);
+}
+
+.projectItemTitle {
+  position: relative;
+}
+
+.projectItemDescription {
+  position: relative;
+}
+
+.projectForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #333;
+  width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+}
+
+.makeProjectTitle{
+  width: 100%;
+  display:flex;
+  justify-content: center;
+}
+
+label {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+input[type="text"], textarea {
+  display: flex;
+  justify-content: center;
+  background-color: #5f5f5f;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.addButton {
+  margin-bottom: 30px;
+  height: 100%;
+  padding: 10px;
+}
+
+.createCancelButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+}
+
+.createButton{
+  width: 20%;
+}
+
+.cancelButton{
+  width: 20%;
+}
+
