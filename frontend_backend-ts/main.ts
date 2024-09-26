@@ -24,7 +24,7 @@ fetch('http://localhost:3999/data')
 const viewProjects = () => {
     let allProjects = document.querySelector('.allProjects')
     for (let index = 0; index < projects.length; index++) {
-        let project = document.createElement('div');
+        let project = document.createElement('li');
         project.className = 'projectItem';
         project.addEventListener('click', (e) => {
             window.location.href = projects[index].git_Link;

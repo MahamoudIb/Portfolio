@@ -1,5 +1,6 @@
 [
   {
+    "id": "1",
     "title": "Software engineering prosjekt backend",
     "description": "Backend system som håndterer all data fra og til frontend.",
     "git_Link": "https://github.com/software-gruppe1/vanlig_template",
@@ -14,6 +15,7 @@
     ]
   },
   {
+    "id": "2",
     "title": "Software engineering prosjekt frontend",
     "description": "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
     "git_Link": "https://github.com/Villa25698/Software_engineer-g1",
@@ -28,6 +30,7 @@
     ]
   },
   {
+    "id": "3",
     "title": ".NET og Rammeverk prosjekt: Havn simulasjon API",
     "description": "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
     "git_Link": "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
@@ -41,6 +44,7 @@
     ]
   },
   {
+    "id": "4",
     "title": "Software engineering prosjekt backend",
     "description": "Backend system som håndterer all data fra og til frontend.",
     "git_Link": "https://github.com/software-gruppe1/vanlig_template",
@@ -55,6 +59,7 @@
     ]
   },
   {
+    "id": "5",
     "title": "Software engineering prosjekt frontend",
     "description": "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
     "git_Link": "https://github.com/Villa25698/Software_engineer-g1",
@@ -69,6 +74,7 @@
     ]
   },
   {
+    "id": "6",
     "title": ".NET og Rammeverk prosjekt: Havn simulasjon API",
     "description": "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
     "git_Link": "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
@@ -82,6 +88,7 @@
     ]
   },
   {
+    "id": "7",
     "title": "Software engineering prosjekt backend",
     "description": "Backend system som håndterer all data fra og til frontend.",
     "git_Link": "https://github.com/software-gruppe1/vanlig_template",
@@ -96,6 +103,7 @@
     ]
   },
   {
+    "id": "8",
     "title": "Software engineering prosjekt frontend",
     "description": "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
     "git_Link": "https://github.com/Villa25698/Software_engineer-g1",
@@ -110,6 +118,7 @@
     ]
   },
   {
+    "id": "9",
     "title": ".NET og Rammeverk prosjekt: Havn simulasjon API",
     "description": "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
     "git_Link": "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
@@ -121,105 +130,5 @@
     "languages": [
       "C#"
     ]
-  },
-  {
-    "title": "Dette er et test",
-    "description": "Dette er for å se om POST request funker etter å ha lagd et prosjekt",
-    "git_Link": "https://ulearn.no",
-    "contributors": [
-      "meg",
-      "mahamoud"
-    ],
-    "languages": [
-      "Javascript"
-    ]
-  },
-  {
-    "title": "Dette er en annen test",
-    "description": "Dette er for å se om POST request funker etter andre forsøk",
-    "git_Link": "https://github.com/MahamoudIb",
-    "contributors": [
-      "alle",
-      "meg"
-    ],
-    "languages": [
-      "Java"
-    ]
-  },
-  {
-    "title": "Dette er den tredje testen",
-    "description": "Det er for å se om POST funker etter tredje forsøk, og det ser ut til at gjør det!",
-    "git_Link": "https://www.linkedin.com/in/mahamod-ibrahim-33206a278/",
-    "contributors": [
-      "Mahamoud",
-      "du"
-    ],
-    "languages": [
-      "Java"
-    ]
-  },
-  {
-    "title": "project",
-    "description": "heieheihei",
-    "git_Link": "https://www.linkedin.com/jobs/view/4008661301/",
-    "contributors": [
-      "hadi"
-    ],
-    "languages": [
-      "java"
-    ]
-  },
-  {
-    "title": "hallo",
-    "description": "dette er en testtttt",
-    "git_Link": "https://www.elkjop.no/account/agreements",
-    "contributors": [
-      "awfawca"
-    ],
-    "languages": [
-      "dwdwdwdwddwddqdddqqq"
-    ]
-  },
-  {
-    "title": "Dette er en test for å seeeee noe",
-    "description": "dette er en test, her er den folkens",
-    "git_Link": "http://localhost:3999/data",
-    "contributors": [
-      "meg",
-      "deg",
-      "du"
-    ],
-    "languages": [
-      "java",
-      "python"
-    ]
-  },
-  {
-    "title": "test2",
-    "description": "jeg er her",
-    "git_Link": "https://www.linkedin.com/in/mahamod-ibrahim-33206a278/",
-    "contributors": [
-      "mamma",
-      "pappa",
-      "meg"
-    ],
-    "languages": [
-      "C",
-      "Javascript"
-    ]
-  },
-  {
-    "title": "",
-    "description": "",
-    "git_Link": ",",
-    "contributors": [],
-    "languages": []
-  },
-  {
-    "title": "",
-    "description": "l",
-    "git_Link": "",
-    "contributors": [],
-    "languages": []
   }
 ]
