@@ -10,6 +10,9 @@ export default function Experiences(props: ExperiencesProps) {
     return(
         <section>
             <h2>Erfaringer: </h2>
+            {experiences.length === 0 ? (
+            <h2 className="warning">Ingen erfaringer</h2>
+          ) : null}
             <ul>
                 {experiences.map((Experience) => (
                     <li key={Experience.id}>

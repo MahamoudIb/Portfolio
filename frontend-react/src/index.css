@@ -92,7 +92,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 8px;
 }
 
 .allProjects :hover{
@@ -101,6 +101,7 @@ nav {
 
 .projectItemTitle {
   position: relative;
+  
 }
 
 .projectItemDescription {
@@ -157,5 +158,11 @@ input[type="text"], textarea {
 
 .cancelButton{
   width: 20%;
+}
+
+.warning {
+  display: flex;
+  color: red;
+  justify-content: center;
 }
 

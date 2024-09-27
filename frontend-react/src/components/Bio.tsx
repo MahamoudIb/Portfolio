@@ -3,24 +3,26 @@ import { Student } from "./types";
 
 type bioProps = {
     student: Student
+    totalProjects: number
 };
 
 export default function Bio(props: bioProps) {
-    const { student } = props;
+    const { student, totalProjects } = props;
 
     return(
         <section className="profile">
             <img className="profilePicture" src={student.profileImg} alt="Profilbilde" />
-            <h1>Navn: {student.name}</h1>
-            <h1>Fødselsdato: {student.birthDate.toLocaleString('nb-NO', {
+            <h2>Navn: {student.name}</h2>
+            <h2>Fødselsdato: {student.birthDate.toLocaleString('nb-NO', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
-            })}</h1>
-            <h1>Utdanning: {student.degree}</h1>
-            <h1>Studiepoeng: {student.points}</h1>
-            <h1>Email: {student.email}</h1>
+            })}</h2>
+            <h2>Utdanning: {student.degree}</h2>
+            <h2>Studiepoeng: {student.points}</h2>
+            <h2>Email: {student.email}</h2>
             <Experiences experiences={student.experiences} />
+            <h2>Total projects: {totalProjects}</h2>
         </section>
     )
 

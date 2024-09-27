@@ -2,6 +2,7 @@ import { useState } from "react";
 import Bio from "./components/Bio";
 import Header from "./components/Header";
 import { Project } from "./components/types";
+import Projects from "./components/Projects";
 
 const projectList = [
   {
@@ -157,14 +158,9 @@ function App() {
 
   const [projects, setProjects] = useState<Project[]>(projectList ?? []);
 
-  const onAddProject = (project: {
-    title: string,
-    description: string,
-    git_Link: string,
-    contributors: [],
-    languages: [],
-    }) => {
+  const onAddProject = (project: Omit<Project, 'id'>) => {
     setProjects((prev) => [...prev, {id : crypto.randomUUID(), ...project}]);
+    console.log(projects)
   };
 
   const onRemoveProject = (id: string) => {
@@ -176,7 +172,8 @@ function App() {
     <>
     <Header name={student.name} />
     <div className="portfolio">
-      <Bio student={student} />
+      <Bio student={student} totalProjects={projects.length} />
+      <Projects projects={projects} onAddProject={onAddProject} onRemoveProject={onRemoveProject}/>
     </div>
     </>
   )
