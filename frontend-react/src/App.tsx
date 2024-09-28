@@ -147,9 +147,9 @@ const student = {
   points: 180,
   email: "student@hiof.no",
   experiences: [
-    { id: "dwdw", name: "Figma UI for customer X" },
-    { id: "dgev", name: "Website for customer Y" },
-    { id: "dgedv", name: "bomboclat" }
+    { id: "dwdw", name: "BreadOS for Bread Inc." },
+    { id: "dgev", name: "website.com for Big Company Inc." },
+    { id: "dgedv", name: ".NET API for you... Inc." }
   ]
 }
 
@@ -170,7 +170,7 @@ function App() {
 
   return (
     <>
-    <Header name={student.name} />
+    <Header name={student.name} email={student.email}/>
     <div className="portfolio">
       <Bio student={student} totalProjects={projects.length} />
       <Projects projects={projects} onAddProject={onAddProject} onRemoveProject={onRemoveProject}/>

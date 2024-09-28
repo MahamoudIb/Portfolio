@@ -25,12 +25,13 @@ nav {
   top: 0;
   right: 0;
   padding: 10px;
+  padding-left: -5px;
+  padding-right: -5px;
   background-color: #242424;
 }
 
 .welcome {
   position: relative;
-  left: 48%;
 }
 
 .portfolio {
@@ -43,11 +44,14 @@ nav {
 }
 
 .profile {
-  width: 400px;
-  height: 100%;
+  width: 500px;
+  height: auto;
   padding-top: 10px;
-  top: 0;
+  padding-bottom: 10%;
+  padding-left: 10px;
+  padding-right: 10px;
   background-color: rgb(50, 48, 48);
+  overflow-y: scroll;
 }
 
 .profilePicture{
@@ -55,7 +59,7 @@ nav {
   left: 20px;
   max-width: 60%;
   height: auto;
-  clip-path: circle(50% at center);
+  clip-path: circle(45% at center);
   border-color: aliceblue;
 }
 
@@ -86,22 +90,27 @@ nav {
 
 .projectItem {
   border: 1px solid #333;
+  margin: 0;
   background-color: rgb(56, 55, 55);
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
   padding: 8px;
+  padding-top: 0;
+  box-shadow: 10px 10px 5px rgb(209, 210, 210);
 }
 
 .allProjects :hover{
   background-color: rgb(75, 74, 74);
 }
 
+.clickable {
+  height: 100%;
+  flex-grow: 1;
+}
 .projectItemTitle {
   position: relative;
-  
 }
 
 .projectItemDescription {
@@ -113,9 +122,11 @@ nav {
   justify-content: center;
   flex-direction: column;
   background-color: #333;
+  border-radius: 10px;
   width: 500px;
   margin: 50px auto;
   padding: 30px;
+  box-shadow: 10px 10px 5px rgb(209, 210, 210);
 }
 
 .makeProjectTitle{
@@ -126,6 +137,7 @@ nav {
 
 label {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 5px;
 }
@@ -164,5 +176,25 @@ input[type="text"], textarea {
   display: flex;
   color: red;
   justify-content: center;
+}
+
+.message {
+  display:flex;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom: 20px;
+  border: 10px solid rgb(59, 59, 59);
+  height: auto;
+  
+}
+
+.messageForm {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+}
+
+.messager {
+  width: 20%;
 }
 

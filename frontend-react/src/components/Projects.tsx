@@ -20,7 +20,7 @@ export default function Projects(props: ProjectsProps) {
           ) : null}
             <ul className="allProjects">
                 {projects.map((project) => (
-                    <Project key={project.id} onRemoveProject={onRemoveProject} id={project.id}>
+                    <Project key={project.id} onRemoveProject={onRemoveProject} id={project.id} git_Link={project.git_Link}>
                         <h1>{project.title}</h1>
                         <p>{project.description}</p>
                     </Project>

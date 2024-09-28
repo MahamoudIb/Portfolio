@@ -1,13 +1,30 @@
+import { useState } from "react";
 import Experiences from "./Experiences";
 import { Student } from "./types";
+import ContactMe from "./ContactMe";
 
 type bioProps = {
-    student: Student
+    student: Omit<Student, 'email'>
     totalProjects: number
 };
 
 export default function Bio(props: bioProps) {
     const { student, totalProjects } = props;
+
+    const [personName, setPersonName] = useState("");
+    const [message, setMessage] = useState("");
+
+    const onReset = () => {
+        setPersonName("");
+        setMessage("");
+    }
+
+    const onAddMessage = (name: string, messageText: string) => {
+        setPersonName(name);
+        setMessage(messageText);
+
+        //console.log(personName +": "+ message)
+    }
 
     return(
         <section className="profile">
@@ -20,9 +37,20 @@ export default function Bio(props: bioProps) {
             })}</h2>
             <h2>Utdanning: {student.degree}</h2>
             <h2>Studiepoeng: {student.points}</h2>
-            <h2>Email: {student.email}</h2>
             <Experiences experiences={student.experiences} />
-            <h2>Total projects: {totalProjects}</h2>
+            <h2>Antall prosjekter: {totalProjects}</h2>
+            <section className="message">
+                <h2>Send melding</h2>
+                <ContactMe onAddMessage={onAddMessage}/>
+                <pre>
+                    {JSON.stringify(
+                        { personName, message },
+                        null,
+                        2
+                    )}
+                </pre>
+                <button onClick={onReset}>Reset</button>
+            </section>
         </section>
     )
 
