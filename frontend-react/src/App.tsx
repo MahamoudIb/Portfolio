@@ -1,143 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Bio from "./components/Bio";
 import Header from "./components/Header";
 import { Project } from "./components/types";
 import Projects from "./components/Projects";
+import { ofetch } from "ofetch/node";
 
-const projectList = [
-  {
-    id: "1",
-    title: "Software engineering prosjekt backend",
-    description: "Backend system som håndterer all data fra og til frontend.",
-    git_Link: "https://github.com/software-gruppe1/vanlig_template",
-    contributors: [
-      "MahamoudIb",
-      "AyubAliA",
-      "Fredrbr",
-      "Villa25698"
-    ],
-    languages: [
-      "Java"
-    ]
-  },
-  {
-    id: "2",
-    title: "Software engineering prosjekt frontend",
-    description: "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
-    git_Link: "https://github.com/Villa25698/Software_engineer-g1",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698"
-    ],
-    languages: [
-      "Vue",
-      "HTML",
-      "JavaScript"
-    ]
-  },
-  {
-    id: "3",
-    title: ".NET og Rammeverk prosjekt: Havn simulasjon API",
-    description: "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
-    git_Link: "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698",
-      "Fredrbr"
-    ],
-    languages: [
-      "C#"
-    ]
-  },
-  {
-    id: "4",
-    title: "Software engineering prosjekt backend",
-    description: "Backend system som håndterer all data fra og til frontend.",
-    git_Link: "https://github.com/software-gruppe1/vanlig_template",
-    contributors: [
-      "MahamoudIb",
-      "AyubAliA",
-      "Fredrbr",
-      "Villa25698"
-    ],
-    languages: [
-      "Java"
-    ]
-  },
-  {
-    id: "5",
-    title: "Software engineering prosjekt frontend",
-    description: "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
-    git_Link: "https://github.com/Villa25698/Software_engineer-g1",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698"
-    ],
-    languages: [
-      "Vue",
-      "HTML",
-      "JavaScript"
-    ]
-  },
-  {
-    id: "6",
-    title: ".NET og Rammeverk prosjekt: Havn simulasjon API",
-    description: "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
-    git_Link: "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698",
-      "Fredrbr"
-    ],
-    languages: [
-      "C#"
-    ]
-  },
-  {
-    id: "7",
-    title: "Software engineering prosjekt backend",
-    description: "Backend system som håndterer all data fra og til frontend.",
-    git_Link: "https://github.com/software-gruppe1/vanlig_template",
-    contributors: [
-      "MahamoudIb",
-      "AyubAliA",
-      "Fredrbr",
-      "Villa25698"
-    ],
-    languages: [
-      "Java"
-    ]
-  },
-  {
-    id: "8",
-    title: "Software engineering prosjekt frontend",
-    description: "I dette prosjektet, så lagde vi en turist nettside, der du kan bestille turistattraksjoner ved hjelp av publiserte annonser og lage din egene annonser.",
-    git_Link: "https://github.com/Villa25698/Software_engineer-g1",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698"
-    ],
-    languages: [
-      "Vue",
-      "HTML",
-      "JavaScript"
-    ]
-  },
-  {
-    id: "9",
-    title: ".NET og Rammeverk prosjekt: Havn simulasjon API",
-    description: "I dette prosjektet, så lagde vi en .NET API som håndterer en realistisk simulasjon av en havn. Du kan bruke API-et i ditt eget prosjekt.",
-    git_Link: "https://github.com/NET-og-Rammeverk-gruppe-MBFS/HavnAPI",
-    contributors: [
-      "MahamoudIb",
-      "Villa25698",
-      "Fredrbr"
-    ],
-    languages: [
-      "C#"
-    ]
-  }
-]
+
 
 const student = {
   profileImg: "./src/assets/image.png",
@@ -156,15 +24,53 @@ const student = {
 
 function App() {
 
-  const [projects, setProjects] = useState<Project[]>(projectList ?? []);
+  const [projects, setProjects] = useState<Project[]>([]);
 
-  const onAddProject = (project: Omit<Project, 'id'>) => {
-    setProjects((prev) => [...prev, {id : crypto.randomUUID(), ...project}]);
-    console.log(projects)
+  useEffect(() => {
+    const initializeData = async () => {
+      try {
+        console.time("fetching");
+        console.log("fetching data");
+        const projectsPromise = ofetch<{ data: Project[] }>(
+          "http://localhost:3002/projects"
+        );
+        const [projects] = await Promise.all([projectsPromise]);
+        console.log("data fetched", projects);
+        setProjects(projects.data ?? []);
+        console.log("data initialized");
+        console.timeEnd("fetching");
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    initializeData();
+  }, []);
+
+  const onAddProject = async (project: Omit<Project, 'id'>) => {
+    const currentProject = {id : crypto.randomUUID(), ...project}
+    try{
+      const createdProject = await ofetch("http://localhost:3002/projects", {
+        method: 'POST',
+        body: currentProject
+      });
+      setProjects((prev) => [...prev, currentProject]);
+      console.log('Project added!:', createdProject.data);
+    } catch (error){
+      console.error(error);
+    }
   };
 
-  const onRemoveProject = (id: string) => {
-    setProjects((prev) => prev.filter((project) => project.id != id));
+  const onRemoveProject = async(id: string) => {
+    try{
+      await ofetch(`http://localhost:3002/projects/${id}`, {
+        method: 'DELETE'
+      });
+        setProjects((prev) => prev.filter((project) => project.id != id));
+        console.log('Project deleted!:');
+    } catch(error){
+      console.error(error);
+    }
   };
 
 

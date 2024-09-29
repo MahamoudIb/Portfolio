@@ -8,31 +8,30 @@ const app = new Hono();
 
 app.use("/*", cors());
 
-app.get("/habits", async (c) => {
+app.get("/projects", async (c) => {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   return c.json({
     data: projects,
   });
 });
 
-app.post("/habits", async (c) => {
+app.post("/projects", async (c) => {
   const dataFromFrontend = await c.req.json<{ project: Project }>();
 
-  projects.push(dataFromFrontend);
+  const {project : created} = dataFromFrontend
+  projects.push(created);
 
   return c.json(created, 201);
 });
 
-app.delete("/habits/:id", (c) => {
-  const id = c.req.param("id") as ID;
-  const index = habits.findIndex((h) => h.id === id);
+app.delete("/projects/:id", (c) => {
+  const id = c.req.param("id");
+  const index = projects.findIndex((h) => h.id === id);
 
   if (index === -1) {
     return c.json(undefined, 404);
   }
-
-  habits.splice(index, 1);
-  streaks.delete(id);
+  projects.splice(index, 1);
   return c.json(undefined, 204);
 });
 
