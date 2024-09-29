@@ -61,9 +61,9 @@ function App() {
     }
   };
 
-  const onRemoveProject = async(id: string) => {
+  const onRemoveProject = (id: string) => {
     try{
-      await ofetch(`http://localhost:3002/projects/${id}`, {
+       ofetch(`http://localhost:3002/projects/${id}`, {
         method: 'DELETE'
       });
         setProjects((prev) => prev.filter((project) => project.id != id));

@@ -16,10 +16,11 @@ app.get("/projects", async (c) => {
 });
 
 app.post("/projects", async (c) => {
-  const dataFromFrontend = await c.req.json<{ project: Project }>();
+  const dataFromFrontend = await c.req.json();
 
   const {project : created} = dataFromFrontend
-  projects.push(created);
+  projects.push(dataFromFrontend);
+  console.log(dataFromFrontend)
 
   return c.json(created, 201);
 });
