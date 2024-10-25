@@ -3,8 +3,7 @@ import type { projectSchema } from "../helpers/schema";
 
 export const actions = {
     add: "add",
-    remove: "remove",
-    update: "update"
+    remove: "remove"
 } as const;
 
 export type HandleOptionsProps =
@@ -13,13 +12,8 @@ export type HandleOptionsProps =
     id: string;
   }
 | {
-    action: typeof actions.update;
-    id: string;
-    project: Partial<Project>;
-  }
-| {
     action: typeof actions.add;
-    project: Partial<Project>;
+    project: Omit<Project, 'id' |'publishedAt'>;
   };
 
   export type HandleOptions = (props: HandleOptionsProps) => void;

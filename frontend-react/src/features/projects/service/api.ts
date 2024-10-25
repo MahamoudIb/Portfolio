@@ -17,7 +17,7 @@ const remove = async (id: string) => {
     }
 };
 
-const create = async (data: Omit<Project, 'id' |'publishedAt' | 'updatedAt'>) => {
+const create = async (data: Omit<Project, 'id' |'publishedAt'>) => {
     try {
         const createdProject = await ofetch(url, {
             method: "POST",
@@ -39,16 +39,5 @@ const getProjects = async () => {
     }
 };
 
-const update = async (id: string, data: Omit<Project, 'id' |'publishedAt' | 'updatedAt'>) => {
-    try {
-        await ofetch(`${url}/${id}`, {
-            method: "PATCH",
-            body: data
-        });
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-export default { remove, create, update, getProjects };
+export default { remove, create, getProjects };
 

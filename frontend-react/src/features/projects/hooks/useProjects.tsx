@@ -71,25 +71,10 @@ export function useProjects() {
           resetToIdle();
         }
       };
-    
-      const update = async (id: string, data: Omit<Project, 'id' |'publishedAt' | 'updatedAt'>) => {
-        try {
-          setStatus("loading");
-          await api.update(id, data);
-          await fetchData();
-          setStatus("success");
-        } catch (error) {
-          setStatus("error");
-          setError("Failed updating habit");
-        } finally {
-          resetToIdle();
-        }
-      };
 
       return {
         add,
         remove,
-        update,
         get: fetchData,
         data,
         error,

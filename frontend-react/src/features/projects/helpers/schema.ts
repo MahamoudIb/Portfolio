@@ -9,8 +9,7 @@ const projectSchema = z.object({
     git_Link: z.string(),
     contributors: z.array(z.string()),
     languages: z.array(z.string()),
-    publishedAt: z.string().datetime(),
-    updatedAt:z.string().datetime(),
+    publishedAt: z.string().datetime()
 })
 
 const projectsSchema = z.array(projectSchema);

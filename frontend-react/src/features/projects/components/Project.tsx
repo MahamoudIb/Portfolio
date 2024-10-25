@@ -6,7 +6,7 @@ type ProjectProps = {
     onRemoveProject: (id: string) => void;
 }
 
-
+//DENNE ER IKKE I BRUK FOR NÅ
 export default function Project(props: PropsWithChildren<ProjectProps>) {
     const {id, git_Link, onRemoveProject, children} = props
     
