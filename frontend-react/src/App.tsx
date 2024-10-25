@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Bio from "./components/Bio";
 import Header from "./components/Header";
 import { Project } from "./components/types";
-import Projects from "./components/Projects";
+import Projects from "./features/projects/components/Projects";
 import { ofetch } from "ofetch/node";
 
 

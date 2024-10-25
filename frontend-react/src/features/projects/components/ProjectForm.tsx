@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Project } from "./types"
+import { Project } from "../../../components/types"
 
 type ProjectFormProps = {
     onAddProject: (project: Omit<Project, 'id'>) => void;

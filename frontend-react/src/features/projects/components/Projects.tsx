@@ -1,6 +1,6 @@
 import Project from "./Project";
 import ProjectForm from "./ProjectForm";
-import { Project as ProjectProps} from "./types"
+import { Project as ProjectProps} from "../../../components/types"
 
 type ProjectsProps = {
     projects: ProjectProps[],
