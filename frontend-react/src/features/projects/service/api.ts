@@ -39,7 +39,7 @@ const getProjects = async () => {
     }
 };
 
-const update = async (id: string, data: Partial<Project>) => {
+const update = async (id: string, data: Omit<Project, 'id' |'publishedAt' | 'updatedAt'>) => {
     try {
         await ofetch(`${url}/${id}`, {
             method: "PATCH",
@@ -50,5 +50,5 @@ const update = async (id: string, data: Partial<Project>) => {
     }
 }
 
-export default { remove, create, update };
+export default { remove, create, update, getProjects };
 
