@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.baseUrl ?? "http://localhost:3999";
+const baseUrl = import.meta.env.baseUrl ?? "http://localhost:3002";
 const endpointV3 = {
   project: `${baseUrl}/v3/projects`,
 };

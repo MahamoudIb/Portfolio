@@ -111,10 +111,17 @@ nav {
 }
 .projectItemTitle {
   position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .projectItemDescription {
-  position: relative;
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;  /* Number of lines displayed before it truncate */
+     overflow: hidden;
 }
 
 .projectForm {

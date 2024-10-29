@@ -33,6 +33,7 @@ const create = async (data: Omit<Project, 'id' |'publishedAt'>) => {
 const getProjects = async () => {
     try {
         const projects = await ofetch(url);
+        console.log(projects)
         return validateProject(projects.data)
     } catch (error) {
         console.error(error);

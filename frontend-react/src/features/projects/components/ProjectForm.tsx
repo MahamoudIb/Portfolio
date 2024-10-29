@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Project } from "../../../components/types"
+import { Project as ProjectProps } from "../types"
 
 type ProjectFormProps = {
-    onSubmit: (project: Omit<Project, 'id' |'publishedAt'>) => void;
+    onSubmit: (project: Omit<ProjectProps, 'id' |'publishedAt'>) => void;
 }
 
 export default function ProjectForm(props: ProjectFormProps) {

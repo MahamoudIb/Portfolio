@@ -34,6 +34,7 @@ export function useProjects() {
           setData(result?.data ?? []);
     
           setStatus("success");
+          console.log(result.data)
         } catch (error) {
           setStatus("error");
           setError("Feilet ved henting av data");

@@ -22,10 +22,14 @@ export default function ProjectPage() {
         };
     }
 
-    if (status.loading) return <p>Prosjektene laster ...</p>;
+    //if (status.loading) return <p>Prosjektene laster ...</p>;
     if (status.error) return <p className="error">{error}</p>;
 
    return (
+    <>
+    {console.log(status)}
+    {status.loading? <p>Prosjektene laster ...</p> : null }
     <Projects projects={projects} handleProjectOptions={handleProjectOptions}/>
+    </>
    ) 
 }

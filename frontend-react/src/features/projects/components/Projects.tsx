@@ -31,8 +31,8 @@ export default function Projects(props:PropsWithChildren<ProjectsProps>) {
                 {projects.map((project) => (
                     <li key={project.id} className="projectItem">
                         <div className="clickable" onClick={() => window.location.href = project.git_Link}>
-                            <h1>{project.title}</h1>
-                            <p>{project.description}</p>
+                            <h1 className="projectItemTitle">{project.title}</h1>
+                            <p className="projectItemDescription">{project.description}</p>
                             <p>Publisert: {formatDistance(project.publishedAt, new Date(), {
                                 addSuffix: true,
                                 includeSeconds: true,
