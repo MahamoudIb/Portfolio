@@ -8,24 +8,27 @@ const app = new Hono();
 
 app.use("/*", cors());
 
-app.get("/projects", async (c) => {
+app.get("/v3/projects", async (c) => {
   // await new Promise((resolve) => setTimeout(resolve, 3000));
   return c.json({
     data: projects,
   });
 });
 
-app.post("/projects", async (c) => {
+app.post("/v3/projects", async (c) => {
   const dataFromFrontend = await c.req.json();
 
-  const {project : created} = dataFromFrontend
-  projects.push(dataFromFrontend);
-  console.log(dataFromFrontend)
+  const created : Project = dataFromFrontend
+  created.publishedAt = new Date();
+  created.id = crypto.randomUUID();
+
+  projects.push(created);
+  console.log(created)
 
   return c.json(created, 201);
 });
 
-app.delete("/projects/:id", (c) => {
+app.delete("/v3/projects/:id", (c) => {
   const id = c.req.param("id");
   const index = projects.findIndex((h) => h.id === id);
 

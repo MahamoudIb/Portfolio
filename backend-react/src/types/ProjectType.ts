@@ -4,5 +4,6 @@ export type Project = {
   description: string,
   git_Link: string,
   contributors: string[],
-  languages: string[]
+  languages: string[],
+  publishedAt: Date,
 }

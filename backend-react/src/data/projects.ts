@@ -16,7 +16,8 @@ const projects: Project[] = [
       ],
       languages: [
         "Java"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "2",
@@ -31,7 +32,8 @@ const projects: Project[] = [
         "Vue",
         "HTML",
         "JavaScript"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "3",
@@ -45,7 +47,8 @@ const projects: Project[] = [
       ],
       languages: [
         "C#"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "4",
@@ -60,7 +63,8 @@ const projects: Project[] = [
       ],
       languages: [
         "Java"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "5",
@@ -75,7 +79,8 @@ const projects: Project[] = [
         "Vue",
         "HTML",
         "JavaScript"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "6",
@@ -89,7 +94,8 @@ const projects: Project[] = [
       ],
       languages: [
         "C#"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "7",
@@ -104,7 +110,8 @@ const projects: Project[] = [
       ],
       languages: [
         "Java"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "8",
@@ -119,7 +126,8 @@ const projects: Project[] = [
         "Vue",
         "HTML",
         "JavaScript"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     },
     {
       id: "9",
@@ -133,6 +141,7 @@ const projects: Project[] = [
       ],
       languages: [
         "C#"
-      ]
+      ],
+      publishedAt: new Date("2024-01-01T09:00:00Z")
     }
   ]
