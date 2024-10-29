@@ -1,6 +1,6 @@
 import { ofetch } from "ofetch";
 
-import { endpoint } from "@/config/url";
+import { endpoint } from "../../../config/url";
 import { Project } from "../types";
 import { validateProject } from "../helpers/schema";
 
