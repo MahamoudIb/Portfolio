@@ -1,0 +1,86 @@
+import { z } from "zod";
+import {createId} from "../../../lib/id"
+
+const projectSchema = z.object({
+    id: z.string().uuid(),
+    title: z.string().min(2),
+    description: z.string().min(2),
+    git_Link: z.string(),
+    contributors: z.array(z.string()),
+    languages: z.array(z.string()),
+    publishedAt: z.coerce.date()
+})
+
+const dbProjectSchema = z.object({
+    id: z.string().uuid(),
+    title: z.string().min(2),
+    description: z.string().min(2),
+    git_Link: z.string(),
+    contributors: z.string(),
+    languages: z.string(),
+    publishedAt: z.string()
+})
+
+const createdProjectSchema = projectSchema.pick({
+    title: true,
+    description: true,
+    git_Link: true,
+    contributors: true,
+    languages: true,
+})
+
+const updateProjectSchema = projectSchema.pick({
+    title: true,
+    description: true,
+    git_Link: true,
+    contributors: true,
+    languages: true,
+    //updatedAt: true
+    publishedAt: true
+}).partial()
+
+export type DbProject = z.infer<typeof dbProjectSchema>;
+export type Project = z.infer<typeof projectSchema>;
+export type CreateProject= z.infer<typeof createdProjectSchema>;
+export type UpdateProject = z.infer<typeof updateProjectSchema>;
+
+export function validateProject(data: unknown) {
+    return projectSchema.parse(data)
+}
+
+export function validateDbProject(data: unknown) {
+    return dbProjectSchema.parse(data)
+}
+
+export function validateCreateProject(data: unknown) {
+    return createdProjectSchema.parse(data)
+}
+
+export function validateUpdateProject(data: unknown) {
+    return updateProjectSchema.parse(data)
+}
+
+export const ToProject = (dbProject : DbProject): Project => {
+    const project: Project = {
+        ...dbProject,
+        contributors: JSON.parse(dbProject.contributors),
+        languages: JSON.parse(dbProject.languages),
+        publishedAt: new Date(dbProject.publishedAt)
+    }
+
+    return validateProject(project);
+}
+
+export const ToDb = (project : Project): DbProject => {
+    const dbProject: DbProject = {
+        id: createId(),
+        title: project.title,
+        description: project.description,
+        git_Link: project.git_Link,
+        contributors: JSON.stringify(project.contributors),
+        languages: JSON.stringify(project.languages),
+        publishedAt: project.publishedAt.toISOString()
+    }
+
+    return validateDbProject(dbProject)
+}
