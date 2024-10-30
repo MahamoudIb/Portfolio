@@ -22,6 +22,15 @@ const dbProjectSchema = z.object({
     publishedAt: z.string()
 })
 
+const dbProjectSchemaWithoutId = z.object({
+    title: z.string().min(2),
+    description: z.string().min(2),
+    git_Link: z.string(),
+    contributors: z.string(),
+    languages: z.string(),
+    publishedAt: z.string()
+})
+
 const createdProjectSchema = projectSchema.pick({
     title: true,
     description: true,
@@ -38,9 +47,10 @@ const updateProjectSchema = projectSchema.pick({
     languages: true,
     //updatedAt: true
     publishedAt: true
-}).partial()
+})
 
 export type DbProject = z.infer<typeof dbProjectSchema>;
+export type DbProjectWithoutId = z.infer<typeof dbProjectSchemaWithoutId>;
 export type Project = z.infer<typeof projectSchema>;
 export type CreateProject= z.infer<typeof createdProjectSchema>;
 export type UpdateProject = z.infer<typeof updateProjectSchema>;
@@ -51,6 +61,10 @@ export function validateProject(data: unknown) {
 
 export function validateDbProject(data: unknown) {
     return dbProjectSchema.parse(data)
+}
+
+export function validateDbProjectWithoutId(data: unknown) {
+    return dbProjectSchemaWithoutId.parse(data)
 }
 
 export function validateCreateProject(data: unknown) {
@@ -85,9 +99,8 @@ export const CreateToDb = (project : CreateProject): DbProject => {
     return validateDbProject(dbProject)
 }
 
-export const UpdateToDb = (project : UpdateProject): DbProject => {
-    const dbProject: DbProject = {
-        id: project.id ?? createId(),
+export const UpdateToDb = (project : UpdateProject): DbProjectWithoutId => {
+    const dbProject: DbProjectWithoutId = {
         title: project.title,
         description: project.description,
         git_Link: project.git_Link,
@@ -97,5 +110,5 @@ export const UpdateToDb = (project : UpdateProject): DbProject => {
         //updatedAt: new Date().toISOString()
     }
 
-    return validateDbProject(dbProject)
+    return validateDbProjectWithoutId(dbProject)
 }

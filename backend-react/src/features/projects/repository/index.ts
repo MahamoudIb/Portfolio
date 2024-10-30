@@ -1,21 +1,19 @@
+import { ResultHandler } from '@/lib/result'
 import prisma from '../../../lib/clients/db'
-import { Project, CreateProject, UpdateProject, DbProject, ToDb, ToProject} from '../helpers/index'
+import { Project, CreateProject, UpdateProject, ToProject, CreateToDb, UpdateToDb} from '../helpers/index'
 
-const createProject = async (data : CreateProject) => {
-
-    project = ToDb() 
-
-
+export const createProject = async (data : CreateProject) => {
     try {
-        const project = await prisma.project.create({ data })
+        const project = CreateToDb(data) 
+        const create = await prisma.project.create({ project })
   
-        return { success: true, data: project }
+        return ResultHandler.success()
     } catch (error) {
-        return { success: false, error: 'Failed creating project' }
+        return ResultHandler.failure(error, "INTERNAL_SERVER_ERROR")
     }
   }
 
-const getProjects = async() => {
+export const getProjects = async() => {
     try {
         const projects = await prisma.project.findMany();
 
