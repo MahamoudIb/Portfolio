@@ -1,6 +1,7 @@
 import { z } from "zod";
-import {createId} from "../../../lib/id"
+import {createId} from "@/lib/id"
 
+//Meste parten av denne filen kan bli redusert siden Prisma kan håndtere det meste, som f.eks ID og Date. Jeg gjør dette kun for trening
 const projectSchema = z.object({
     id: z.string().uuid(),
     title: z.string().min(2),
@@ -71,7 +72,7 @@ export const ToProject = (dbProject : DbProject): Project => {
     return validateProject(project);
 }
 
-export const ToDb = (project : Project): DbProject => {
+export const CreateToDb = (project : CreateProject): DbProject => {
     const dbProject: DbProject = {
         id: createId(),
         title: project.title,
@@ -79,7 +80,21 @@ export const ToDb = (project : Project): DbProject => {
         git_Link: project.git_Link,
         contributors: JSON.stringify(project.contributors),
         languages: JSON.stringify(project.languages),
+        publishedAt: new Date().toISOString()
+    }
+    return validateDbProject(dbProject)
+}
+
+export const UpdateToDb = (project : UpdateProject): DbProject => {
+    const dbProject: DbProject = {
+        id: project.id ?? createId(),
+        title: project.title,
+        description: project.description,
+        git_Link: project.git_Link,
+        contributors: JSON.stringify(project.contributors),
+        languages: JSON.stringify(project.languages),
         publishedAt: project.publishedAt.toISOString()
+        //updatedAt: new Date().toISOString()
     }
 
     return validateDbProject(dbProject)

@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { projects } from "./data/projects";
-import { Project } from "./types/ProjectType"
+import { Project } from "./types"
 
 
 const app = new Hono();

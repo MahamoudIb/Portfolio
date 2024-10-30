@@ -1,7 +1,11 @@
 import prisma from '../../../lib/clients/db'
-import { Project, CreateProject, UpdateProject} from '../helpers/index'
+import { Project, CreateProject, UpdateProject, DbProject, ToDb, ToProject} from '../helpers/index'
 
 const createProject = async (data : CreateProject) => {
+
+    project = ToDb() 
+
+
     try {
         const project = await prisma.project.create({ data })
   

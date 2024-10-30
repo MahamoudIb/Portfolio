@@ -1,4 +1,4 @@
-import { Project } from "../types/ProjectType";
+import { Project } from "../types";
 
 export { projects };
 
