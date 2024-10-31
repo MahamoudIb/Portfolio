@@ -1,8 +1,8 @@
 import { ResultHandler } from '@/lib/result'
 import prisma from '../../../lib/clients/db'
-import { CreateProject, UpdateProject, ToProject, CreateToDb, UpdateToDb, DbProject, ToProjectArray} from '../helpers/index'
+import { CreateProject, UpdateProject, ToProject, CreateToDb, UpdateToDb, DbProject, ToProjectArray, DbProjectWithoutId} from '../helpers/index'
 
-export const createProject = async (data : CreateProject) => {
+export const create = async (data : CreateProject) => {
     try {
         const project = CreateToDb(data) 
         const create = await prisma.project.create({data: project})
@@ -13,11 +13,11 @@ export const createProject = async (data : CreateProject) => {
     }
   }
 
-export const getProjects = async() => {
+export const list = async() => {
     try {
         const projects : DbProject[] = await prisma.project.findMany();
 
-        return {success: true, data: ToProjectArray(projects)}
+        return ResultHandler.success(ToProjectArray(projects))
     } catch (error) {
         return ResultHandler.failure(error, "INTERNAL_SERVER_ERROR")
     }
@@ -37,9 +37,9 @@ export const getById = async(id : string) => {
     }
 }
 
-export const updateProject = async(updatedProject : UpdateProject, id : string) => {
+export const updateById = async(updatedProject : UpdateProject, id : string) => {
     try {
-        const update = await prisma.project.update({
+        const update : DbProjectWithoutId = await prisma.project.update({
             where: {
               id: id,
             },
@@ -47,6 +47,19 @@ export const updateProject = async(updatedProject : UpdateProject, id : string) 
         }
     )
         return ResultHandler.success(update)
+    } catch (error) {
+        return ResultHandler.failure(error, "NOT_FOUND")
+    }
+}
+
+export const deleteById = async(id: string) => {
+    try {
+        const deleted = await prisma.project.delete({
+            where: {
+              id: id,
+            },
+          })
+        return ResultHandler.success(id)
     } catch (error) {
         return ResultHandler.failure(error, "NOT_FOUND")
     }
