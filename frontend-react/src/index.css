@@ -99,6 +99,7 @@ nav {
   padding: 8px;
   padding-top: 0;
   box-shadow: 10px 10px 5px rgb(209, 210, 210);
+  word-wrap: break-word;
 }
 
 .allProjects :hover{
@@ -108,13 +109,23 @@ nav {
 .clickable {
   height: 100%;
   flex-grow: 1;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .projectItemTitle {
   position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px;
 }
 
 .projectItemDescription {
-  position: relative;
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;  /* Number of lines displayed before it truncate */
+     overflow: hidden;
 }
 
 .projectForm {

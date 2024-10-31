@@ -38,7 +38,6 @@ export default function Bio(props: bioProps) {
             <h2>Utdanning: {student.degree}</h2>
             <h2>Studiepoeng: {student.points}</h2>
             <Experiences experiences={student.experiences} />
-            <h2>Antall prosjekter: {totalProjects}</h2>
             <section className="message">
                 <h2>Send melding</h2>
                 <ContactMe onAddMessage={onAddMessage}/>

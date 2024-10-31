@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { Project } from "./types"
+import { Project as ProjectProps } from "../types"
 
 type ProjectFormProps = {
-    onAddProject: (project: Omit<Project, 'id'>) => void;
+    onSubmit: (project: Omit<ProjectProps, 'id' |'publishedAt'>) => void;
 }
 
 export default function ProjectForm(props: ProjectFormProps) {
-    const {onAddProject } = props;
+    const {onSubmit } = props;
 
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -28,7 +28,7 @@ export default function ProjectForm(props: ProjectFormProps) {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!title || !description || !git_Link) return;
-        onAddProject({
+        onSubmit({
             title,
             description,
             git_Link,
