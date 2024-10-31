@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import {projects} from "../src/data/projects"
+import { createId } from '@/lib/id'
 
 const prisma = new PrismaClient()
 
@@ -10,6 +11,7 @@ const createProjects = async () => {
       data.map(async (project) => {
         await prisma.project.create({
           data: {
+            id: createId(),
             title: project.title,
             description: project.description,
             git_Link: project.git_Link,

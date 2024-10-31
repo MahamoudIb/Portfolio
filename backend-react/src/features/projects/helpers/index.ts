@@ -15,7 +15,7 @@ const projectSchema = z.object({
 const projectsSchema = z.array(projectSchema);
 
 const dbProjectSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
     title: z.string().min(2),
     description: z.string().min(2),
     git_Link: z.string(),

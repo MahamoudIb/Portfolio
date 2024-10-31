@@ -18,7 +18,7 @@ app.get("/v3/projects", async (c) => {
     return c.json(result)
 });
 
-app.get("/v3/:id/projects", async (c) => {
+app.get("/v3/projects/:id", async (c) => {
     const id = c.req.param("id");
     const result = await findOneProject(id)
 
@@ -36,7 +36,7 @@ app.post("/v3/projects", async (c) => {
   return c.json<Data<string>>(result, { status: 201 });
 });
 
-app.patch("/v3/:id/projects", async (c) => {
+app.patch("/v3/projects/:id", async (c) => {
     const id = c.req.param("id");
     const dataFromFrontend = await c.req.json();
     const result = await updateProject(id, dataFromFrontend)
@@ -46,7 +46,7 @@ app.patch("/v3/:id/projects", async (c) => {
     return c.json(result)
   });
 
-app.delete("/v3/:id/projects/", async(c) => {
+app.delete("/v3/projects/:id", async(c) => {
   const id = c.req.param("id");
   const result = await deleteProject(id);
 

@@ -33,11 +33,13 @@ export default function Projects(props:PropsWithChildren<ProjectsProps>) {
                         <div className="clickable" onClick={() => window.location.href = project.git_Link}>
                             <h1 className="projectItemTitle">{project.title}</h1>
                             <p className="projectItemDescription">{project.description}</p>
-                            <p>Publisert: {formatDistance(project.publishedAt, new Date(), {
+                            <p>Publisert for {formatDistance(project.publishedAt, new Date(), {
                                 addSuffix: true,
                                 includeSeconds: true,
                                 locale: nb,
                         })}</p>
+                            <p>Programmeringsspråk: {JSON.stringify(project.languages)}</p>
+                            <p>Bidragsytere: {JSON.stringify(project.contributors)}</p>
                         </div>
                         <button type="button" onClick={() => removeProject(project.id)}>Slett</button>
                     </li>
