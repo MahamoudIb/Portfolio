@@ -1,4 +1,4 @@
-import { Project } from "../types";
+import { Project } from "@/features/projects/helpers/index";
 
 export { projects };
 

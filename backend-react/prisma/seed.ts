@@ -15,7 +15,7 @@ const createProjects = async () => {
             git_Link: project.git_Link,
             contributors: JSON.stringify(project.contributors),
             languages: JSON.stringify(project.languages),
-            publishedAt: project.publishedAt
+            publishedAt: project.publishedAt.toISOString()
           },
         })
       })

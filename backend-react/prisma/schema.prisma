@@ -10,9 +10,9 @@ generator client {
 model Project {
   id String      @id @default(cuid())
   title String
-  description String?
+  description String
   git_Link String
   contributors String
   languages String
-  publishedAt DateTime @default(now())
+  publishedAt String 
 }

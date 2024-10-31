@@ -12,6 +12,8 @@ const projectSchema = z.object({
     publishedAt: z.coerce.date()
 })
 
+const projectsSchema = z.array(projectSchema);
+
 const dbProjectSchema = z.object({
     id: z.string().uuid(),
     title: z.string().min(2),
@@ -59,6 +61,10 @@ export function validateProject(data: unknown) {
     return projectSchema.parse(data)
 }
 
+export function validateProjects(data: unknown) {
+    return projectsSchema.parse(data)
+}
+
 export function validateDbProject(data: unknown) {
     return dbProjectSchema.parse(data)
 }
@@ -84,6 +90,22 @@ export const ToProject = (dbProject : DbProject): Project => {
     }
 
     return validateProject(project);
+}
+
+export const ToProjectArray = (dbProject : DbProject[]): Project[] => {
+
+    const project : Project[] = []
+
+    dbProject.map((projec) => {
+        project.push({
+            ...projec,
+            contributors: JSON.parse(projec.contributors),
+            languages: JSON.parse(projec.languages),
+            publishedAt: new Date(projec.publishedAt)
+        })
+    })
+
+    return validateProjects(project);
 }
 
 export const CreateToDb = (project : CreateProject): DbProject => {
